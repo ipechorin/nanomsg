@@ -41,6 +41,11 @@ endif ()
 
 add_subdirectory (src)
 
+#  Build the tools
+
+add_executable (nanocat tools/nanocat.c tools/options.c)
+target_link_libraries (nanocat nanomsg)
+
 #  Build unit tests.
 
 set (all_tests "")
@@ -113,6 +118,8 @@ install (FILES src/reqrep.h DESTINATION include/nanomsg)
 install (FILES src/pipeline.h DESTINATION include/nanomsg)
 install (FILES src/survey.h DESTINATION include/nanomsg)
 install (FILES src/bus.h DESTINATION include/nanomsg)
+
+install (FILES nanocat DESTINATION bin)
 
 set (CPACK_GENERATOR "NSIS")
 set (CPACK_PACKAGE_NAME "nanomsg")
